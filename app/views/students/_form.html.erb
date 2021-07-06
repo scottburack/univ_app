@@ -1,4 +1,5 @@
-<%= render 'shared/errors', obj: @student %>
+<%# shareds errors uses error object from model %>
+<%= render 'shared/errors', obj: @student %>  
 
 <div class="container">
   <div class="row center sign-up-form">
@@ -26,7 +27,21 @@
 
           <div class="row">
             <div class="input-field col s12">
-              <%= f.submit(@student.new_record? ? "Sign up" : "Submit updates", class: "btn orange waves-effect waves-light right") %>
+              <%= f.password_field :password, placeholder: "Choose a password" %>
+              <%= f.label :password, class:"active" %>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.password_field :password_confirmation, placeholder: "Confirm your password" %>
+              <%= f.label :password_confirmation, class:"active" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.button(@student.new_record? ? '<i class="material-icons right">arrow_forward</i>Sign up'.html_safe : '<i class="material-icons right">arrow_forward</i>Submit changes'.html_safe, class: "btn orange waves-effect waves-light right") %>
               <% end %>
             </div>
           </div>
